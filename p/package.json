@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "emodal": "^1.2.65",
+    "handsontable": "^2.0.0",
     "jquery": "^3.3.1",
     "pouchdb": "^6.4.3"
   }
