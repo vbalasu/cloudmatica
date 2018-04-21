@@ -83,7 +83,9 @@
     <!-- Handsontable -->
     <script src="node_modules/handsontable/dist/handsontable.min.js"></script>
     <script>
-        eModal.alert('You shall not pass!')
+        // Display a ajax modal, with a title
+        eModal.ajax({ url:'spreadsheet.html', size: 'lg' }, 'Spreadsheet')
+        //.then(ajaxOnLoadCallback);
     </script>
   </body>
 </html>
