@@ -62,9 +62,12 @@
 
       <div class="starter-template">
         <h1>Import CSV</h1>
+        <div style="margin-bottom:10px;">
+            <textarea id="importcsv" class="form-control" rows="10"></textarea>
+        </div>
         <button id="btnImportCSV" type="button" class="btn btn-primary">Import CSV</button>
-        <button id="btnSpreadsheet" type="button" class="btn btn-primary">Spreadsheet</button>
       </div>
+      <div id="example1" style="width:100%;"></div>
 
     </div><!-- /.container -->
 
@@ -86,14 +89,31 @@
     <!-- Papa Parse (CSV) -->
     <script src="node_modules/papaparse/papaparse.min.js"></script>
     <script>
-        // Display a ajax modal, with a title
-        //eModal.ajax({ url:'spreadsheet.html', size: 'lg' }, 'Spreadsheet')
-        //.then(ajaxOnLoadCallback);
+        function showSpreadsheet(mydata) {
+            var container1 = document.getElementById('example1'), hot1
+
+            hot1 = new Handsontable(container1, {
+            data: mydata,
+            startRows: 5,
+            startCols: 5,
+            colHeaders: Object.keys(mydata[0]),
+            minSpareRows: 0
+            });
+        }
+
         $('#btnImportCSV').click(()=>{
-            eModal.ajax('importcsv.html', 'Import CSV')
-        })
-        $('#btnSpreadsheet').click(()=>{
-            eModal.ajax('spreadsheet.html', 'Spreadsheet')
+            var db = new PouchDB('cloudmatica')
+            var remotedb = new PouchDB('http://localhost:5984/cloudmatica')
+            var value = $('#importcsv').val()
+            db.get('csv')
+            .then((data)=>{data.contents = value; db.put(data)})
+            .catch((err)=>{if (err.name === 'not_found') db.put({"_id":"csv","contents":value}); else throw err})
+            db.sync(remotedb)
+            obj = Papa.parse(value, {header:true}).data
+            console.log(obj)
+            showSpreadsheet(obj)
+            $('#btnImportCSV').attr('disabled', 'disabled')
+            eModal.alert('Saved', 'Imported Successfully')
         })
     </script>
   </body>
