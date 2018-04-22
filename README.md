@@ -10,4 +10,4 @@ Dependencies
 - Pouchdb
 - Handsontable
 - emodal
-- csv
+- Papa parse
