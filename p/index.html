@@ -63,6 +63,7 @@
       <div class="starter-template">
         <h1>Import CSV</h1>
         <button id="btnImportCSV" type="button" class="btn btn-primary">Import CSV</button>
+        <button id="btnSpreadsheet" type="button" class="btn btn-primary">Spreadsheet</button>
       </div>
 
     </div><!-- /.container -->
@@ -82,12 +83,17 @@
     <script src="node_modules/emodal/dist/eModal.min.js"></script>
     <!-- Handsontable -->
     <script src="node_modules/handsontable/dist/handsontable.min.js"></script>
+    <!-- Papa Parse (CSV) -->
+    <script src="node_modules/papaparse/papaparse.min.js"></script>
     <script>
         // Display a ajax modal, with a title
         //eModal.ajax({ url:'spreadsheet.html', size: 'lg' }, 'Spreadsheet')
         //.then(ajaxOnLoadCallback);
         $('#btnImportCSV').click(()=>{
             eModal.ajax('importcsv.html', 'Import CSV')
+        })
+        $('#btnSpreadsheet').click(()=>{
+            eModal.ajax('spreadsheet.html', 'Spreadsheet')
         })
     </script>
   </body>

@@ -13,6 +13,8 @@
     .then((data)=>{data.contents = value; db.put(data)})
     .catch((err)=>{if (err.name === 'not_found') db.put({"_id":"csv","contents":value}); else throw err})
     db.sync(remotedb)
+    obj = Papa.parse(value, {header:true}).data
+    console.log(obj)
     eModal.alert('Saved', 'Imported Successfully')
   })
 </script>
