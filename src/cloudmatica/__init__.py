@@ -10,6 +10,9 @@ parser_go = subparsers.add_parser('go',
                                   help='Return the url based on the short',
                                   epilog='EXAMPLE: go myshort')
 parser_go.add_argument('short', type=str, help='The short name')
+parser_go = subparsers.add_parser('list-shorts',
+                                  help='Return a list of shorts and their corresponding urls',
+                                  epilog='EXAMPLE: list-shorts')
 args = parser.parse_args()
 
 
@@ -31,9 +34,23 @@ def shorten(args):
 
 
 def go(args):
-    result = 'https://example.com'
+    request_url = f'{get_endpoint()}/go/{args.short}'
+    import requests
+    response = requests.get(request_url)
+    result = response.text
     print(result)
     return result
+
+
+def list_shorts():
+    request_url = f'{get_endpoint()}/list_shorts'
+    import requests
+    response = requests.get(request_url)
+    result = response.text
+    print(result)
+    return result
+
+
 
 def main():
     import sys
@@ -43,6 +60,8 @@ def main():
         shorten(args)
     elif args.command == 'go':
         go(args)
+    elif args.command == 'list-shorts':
+        list_shorts()
 
 
 if __name__ == '__main__':

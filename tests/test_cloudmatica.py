@@ -24,9 +24,15 @@ def test_call_shorten():
 # User can retrieve url based on short
 def test_go():
     import subprocess
-    proc = subprocess.run(['python', 'src/cloudmatica/__init__.py', 'go', 'myshort'], capture_output=True, text=True)
-    assert proc.stdout == 'https://example.com\n'
+    proc = subprocess.run(['python', 'src/cloudmatica/__init__.py', 'go', 'localhost'], capture_output=True, text=True)
+    assert proc.stdout == '{"hello":"world"}\n'
 
 # Calling shorten with an invalid url returns an error
 # Calling shorten with an invalid short returns an error
+
+
 # Calling list returns a list of short names and urls in descending order of popularity
+def test_list_shorts():
+    import subprocess
+    proc = subprocess.run(['python', 'src/cloudmatica/__init__.py', 'list-shorts'], capture_output=True, text=True)
+    assert 'myshort' in proc.stdout
