@@ -7,7 +7,7 @@ parser_shorten = subparsers.add_parser('shorten',
 parser_shorten.add_argument('url', type=str, help='The url to shorten')
 parser_shorten.add_argument('short', type=str, help='The short name')
 parser_go = subparsers.add_parser('go',
-                                  help='Return the url based on the short',
+                                  help='Go to the url based on the short',
                                   epilog='EXAMPLE: go myshort')
 parser_go.add_argument('short', type=str, help='The short name')
 parser_go = subparsers.add_parser('list-shorts',
