@@ -2,3 +2,4 @@ dist/
 src/cloudmatica.egg-info/
 venv/
 .idea/
+tests/__pycache__/

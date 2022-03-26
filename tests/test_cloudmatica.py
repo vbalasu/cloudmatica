@@ -14,8 +14,11 @@ def test_call_shorten():
     assert proc.stdout == f'https://go.cloudmatica.com/myshort\n'
 
 
-# Calling shorten with valid parameters results in short being written to database
-
+# User can retrieve url based on short
+def test_go():
+    import subprocess
+    proc = subprocess.run(['python', 'src/cloudmatica/__init__.py', 'go', 'myshort'], capture_output=True, text=True)
+    assert proc.stdout == 'https://example.com\n'
 
 # Calling shorten with an invalid url returns an error
 # Calling shorten with an invalid short returns an error
