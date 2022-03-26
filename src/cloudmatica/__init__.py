@@ -13,8 +13,19 @@ parser_go.add_argument('short', type=str, help='The short name')
 args = parser.parse_args()
 
 
+def get_endpoint():
+    import sys
+    if sys.platform == 'darwin':
+        return 'http://127.0.0.1:8888'
+    else:
+        return 'https://aynxsrxdqg.execute-api.us-east-1.amazonaws.com/api'
+
+
 def shorten(args):
-    result = f'https://go.cloudmatica.com/{args.short}'
+    request_url = f'{get_endpoint()}/shorten/{args.short}?url={args.url}'
+    import requests
+    response = requests.get(request_url)
+    result = response.text
     print(result)
     return result
 

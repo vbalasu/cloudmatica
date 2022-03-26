@@ -3,3 +3,4 @@ src/cloudmatica.egg-info/
 venv/
 .idea/
 tests/__pycache__/
+src/cloudmatica/__pycache__/
