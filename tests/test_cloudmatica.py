@@ -18,7 +18,7 @@ def test_call_shorten():
     import random
     short = str(random.randint(0, 1000000000))
     proc = subprocess.run(['python', 'src/cloudmatica/__init__.py', 'shorten', 'https://example.com', short], capture_output=True, text=True)
-    assert proc.stdout == f'https://go.cloudmatica.com/{short}\n'
+    assert proc.stdout == f'https://go.cloudmatica.com/go/{short}\n'
 
 
 # User can retrieve url based on short

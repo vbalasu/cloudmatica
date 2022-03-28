@@ -23,7 +23,7 @@ def get_endpoint():
     if sys.platform == 'darwin' and os.getenv('PYTEST') == 'TRUE':
         return 'http://127.0.0.1:8888'
     else:
-        return 'https://mdsl09trll.execute-api.us-east-1.amazonaws.com/api'
+        return 'https://go.cloudmatica.com'
 
 
 def shorten(args):
