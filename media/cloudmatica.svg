@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Lighter blue background -->
+  <rect width="512" height="512" fill="#6BB6FF"/>
+
+  <!-- More complex cloud with flat base -->
+  <path
+    fill="#FFFFFF"
+    d="
+      M110 300
+      C110 272 132 250 160 246
+      C170 215 200 195 235 195
+      C250 170 280 155 315 160
+      C350 165 375 190 382 220
+      C412 224 435 250 435 280
+      C435 315 405 340 370 340
+      L150 340
+      C125 340 110 322 110 300
+      Z
+    "
+  />
+</svg>
